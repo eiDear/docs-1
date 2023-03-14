@@ -87,8 +87,7 @@ dereference
 deserializ(ation|ed?)
 dev
 distsql
-Dockerfile
-Dockerfiles
+Dockerfiles?
 docstrings?
 downsamples?
 duplicative
