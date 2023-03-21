@@ -23,7 +23,7 @@ For each cluster, the following details display:
 - The cluster's **Plan Type**, either Serverless or Dedicated
 - The date and time the cluster was **Created**
 - The cluster's current **State**
-- The cluster's **Cloud** provider, either GCP or AWS
+- The cluster's **Cloud** provider
 - The **Version** of CockroachDB the cluster is running
 - The **Action** button, which is used to:
     - [**Add or remove nodes**](?filters=dedicated#add-or-remove-nodes-from-a-cluster)
@@ -39,12 +39,11 @@ To view and manage a specific cluster, click the name of the cluster. The [**Ove
 
 The **Overview** page displays details about the selected {{ site.data.products.db }} cluster:
 
-- The **Current Charges** and next billing date for the cluster
-- The cluster's **Cloud** provider
-- The cluster's **Hardware per node**
-- A list of the selected cluster's nodes.
+- The cluster's **Configuration**, which includes the cloud provider, plan type, region(s), nodes and their status, compute per node, and storage per node.
 
-    For each node, the page displays the node's `Name` and `Status`, nested under its region.
+- The **Cluster upgrade** settings, which include the upgrade window, any upcoming upgrades, and the upgrade exclusion period.
+
+- The **PCI Ready** section, which shows the statuses of the features required for PCI readiness ({{ site.data.products.dedicated }} advanced clusters only).
 
 From the **Overview** page, you can connect to your cluster. For more information, see [Connect to Your {{ site.data.products.dedicated }} Cluster](connect-to-your-cluster.html).
 
@@ -156,7 +155,19 @@ When you remove a region from a [multi-region](plan-your-cluster.html#multi-regi
 1. Click **Continue to payment**.
 1. In the **Confirmation** dialog, verify your new cluster configuration.
 1. Click **OK**.
-{% endcomment %}
+{% endcomment 
+  
+## Set a maintenance window
+
+From your cluster's **Overview** page, you can view and manage the [patch upgrade schedule](upgrade-policy.html) for your cluster. If no window is set, your cluster will be automatically upgraded as soon as new patch versions are available. To set a maintenance window:
+
+1. Click the pencil icon next to **Cluster upgrades** to edit the maintenance window.
+1. From the **Upgrade day** dropdown, select the day of the week during which upgrades may be applied.
+1. From the **Start of window** dropdown, select a start time for your upgrade window.
+    
+    Times should be entered in UTC. The window will last for 6 hours from the start time.
+    
+1. (Optional) If you need to pause automatic upgrades, set an **Exclusion window** of up to 30 days.
 
 ## Create a database
 
