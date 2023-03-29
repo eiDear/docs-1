@@ -868,9 +868,9 @@ INSERT INTO foo SELECT gen_random_uuid() FROM generate_series(1,100000);
 
 #### CockroachDB v23.1 and earlier
 
-By default, the output of querying `crdb_internal.ranges` is as shown below.
+By default, the output of querying `crdb_internal.ranges` is shown below.
 
-In v23.1, you can enable the output that will become the default in [CockroachDB v23.2 and later](#ranges-v23.2) by changing the [cluster setting](cluster-settings.html) `sql.show_ranges_deprecated_behavior.enabled` to `false`.
+{% include {{page.version.version}}/sql/show-ranges-output-deprecation-notice.md %}
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
@@ -940,6 +940,8 @@ SELECT * FROM crdb_internal.ranges;
 <a name="ranges-v23.2"></a>
 
 #### CockroachDB v23.2 and later
+
+[xxx](): WRITE MORE HERE
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
@@ -1021,9 +1023,9 @@ INSERT INTO foo SELECT gen_random_uuid() FROM generate_series(1,100000);
 
 #### CockroachDB v23.1 and earlier
 
-By default, the output of querying `crdb_internal.ranges_no_leases` is as shown below.
+By default, the output of querying `crdb_internal.ranges_no_leases` is shown below.
 
-In v23.1, you can enable the output that will become the default in [CockroachDB v23.2 and later](#ranges-no-leases-v23.2) by changing the [cluster setting](cluster-settings.html) `sql.show_ranges_deprecated_behavior.enabled` to `false`.
+{% include {{page.version.version}}/sql/show-ranges-output-deprecation-notice.md %}
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
@@ -1093,6 +1095,8 @@ SELECT * FROM crdb_internal.ranges_no_leases;
 <a name="ranges-no-leases-v23.2"></a>
 
 #### CockroachDB v23.2 and later
+
+[xxx](): WRITE MORE HERE
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
