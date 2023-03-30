@@ -5,10 +5,13 @@ toc: true
 docs_area: develop
 ---
 
-To iterate through a table one "page" of results at a time (also known as pagination) there are two options, only one of which is recommended:
+To iterate through a table one "page" of results at a time (also known as pagination) there are several options:
 
+- [Cursors](cursors.html)
+- [`LIMIT` / `OFFSET`](limit.html) pagination (slow, not recommended)
 - Keyset pagination (**fast, recommended**)
-- `LIMIT` / `OFFSET` pagination (slow, not recommended)
+
+[xxx](): WRITE ABOUT CURSOR VS KEYSET PAGINATION
 
 ## Keyset pagination
 
@@ -26,11 +29,7 @@ SELECT * FROM t AS OF SYSTEM TIME ${time}
 
 This is faster than using `LIMIT`/`OFFSET` because, instead of doing a full table scan up to the value of the `OFFSET`, a keyset pagination query looks at a fixed-size set of records for each iteration. This can be done quickly provided that the key used in the `WHERE` clause to implement the pagination is [indexed](indexes.html#best-practices) and [unique](unique.html). A [primary key](primary-key.html) meets both of these criteria.
 
-{{site.data.alerts.callout_info}}
-CockroachDB does not have cursors. To support a cursor-like use case, namely "operate on a snapshot of the database at the moment the cursor is opened", use the [`AS OF SYSTEM TIME`](as-of-system-time.html) clause as shown in the examples below.
-{{site.data.alerts.end}}
-
-## Example
+## Examples
 
 The examples in this section use the [employees data set](https://github.com/datacharmer/test_db), which you can load into CockroachDB as follows:
 
@@ -187,3 +186,8 @@ As shown by the `estimated row count` row, this query scans only 25 rows, far fe
 {{site.data.alerts.callout_danger}}
 Using a sequential (i.e., non-[UUID](uuid.html)) primary key creates hot spots in the database for write-heavy workloads, since concurrent [`INSERT`](insert.html)s to the table will attempt to write to the same (or nearby) underlying [ranges](architecture/overview.html#architecture-range). This can be mitigated by designing your schema with [multi-column primary keys which include a monotonically increasing column](performance-best-practices-overview.html#use-multi-column-primary-keys).
 {{site.data.alerts.end}}
+
+## See also
+
+- [Cursors](cursors.html)
+- [`LIMIT` / `OFFSET`](limit.html) pagination (slow, not recommended)
