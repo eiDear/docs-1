@@ -4,13 +4,11 @@ summary: Paginate results from queries against your cluster using SQL cursors
 toc: true
 ---
 
-[Xxx](): figure out where to put this page
-
 A cursor is a placeholder into a selection query that allows you to iterate over subsets of the rows returned by that query.
 
-Cursors differ from [keyset pagination](pagination.html) and [`LIMIT`/`OFFSET`](limit.html) in that:
+Cursors differ from [keyset pagination](pagination.html) and [`LIMIT`/`OFFSET`](limit-offset.html) in that:
 
-- Each cursor is a stateful SQL object that is referred to by name.
+- Each cursor is a stateful SQL object that is referred to by a unique name.
 - Each cursor requires holding open its own dedicated (read-only) [transaction](transactions.html).
 - Each cursor operates on a snapshot of the database at the moment that cursor is opened.
 
@@ -36,7 +34,7 @@ Cursors are declared using the following keywords:
 
 ## Examples
 
-These examples assume the [schema](schema-design-overview.html) from the [MovR data set](movr.html).
+These examples assume the presence of the [MovR data set](movr.html).
 
 ### Use a cursor
 
@@ -77,7 +75,7 @@ COMMIT;
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
-SELECT * FROM pg_catalog.pg_cursors;
+SELECT * FROM pg_cursors;
 ~~~
 
 ~~~
@@ -89,20 +87,13 @@ SELECT * FROM pg_catalog.pg_cursors;
 
 ## Limitations
 
-[xxx](): revise this, then make it an include and share it onto 'Known Limitations' page
+{% include {{page.version.version}}/known-limitations/sql-cursors.md %}
 
-CockroachDB implements [cursor](xxx: make me a conditional link) support with the following limitations:
+## Differences between cursors and keyset pagination
 
-- `DECLARE` only supports forward cursors.
-- `FETCH` supports forward, relative, and absolute variants, but only for forward cursors.
-- `BINARY CURSOR`, which returns data in the Postgres binary format, is not supported.
-- `MOVE` which allows advancing the cursor without returning any rows, is not supported.
-- `WITH HOLD`, which allows keeping a cursor open for longer than a transaction by writing its results into a buffer, is not supported.
-- Scrollable cursor (also known as reverse `FETCH`) is not supported.
-- [`SELECT ... FOR UPDATE`](select-for-update.html) is not supported.
-- Respect for [`SAVEPOINT`s](savepoint.html) is not supported. Cursor definitions do not disappear properly if rolled back to a `SAVEPOINT` from before they were created.
+{% include {{page.version.version}}/sql/cursors-vs-keyset-pagination.md %}
 
 ## See also
 
 - [Keyset pagination](pagination.html)
-- [`LIMIT`/`OFFSET`](limit.html)
+- [`LIMIT`/`OFFSET`](limit-offset.html)

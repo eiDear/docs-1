@@ -8,7 +8,7 @@ docs_area: develop
 To iterate through a table one "page" of results at a time (also known as pagination) there are several options:
 
 - [Cursors](cursors.html)
-- [`LIMIT` / `OFFSET`](limit.html) pagination (slow, not recommended)
+- [`LIMIT` / `OFFSET`](limit-offset.html) pagination (slow, not recommended)
 - Keyset pagination (**fast, recommended**)
 
 [xxx](): WRITE ABOUT CURSOR VS KEYSET PAGINATION
@@ -186,6 +186,10 @@ As shown by the `estimated row count` row, this query scans only 25 rows, far fe
 {{site.data.alerts.callout_danger}}
 Using a sequential (i.e., non-[UUID](uuid.html)) primary key creates hot spots in the database for write-heavy workloads, since concurrent [`INSERT`](insert.html)s to the table will attempt to write to the same (or nearby) underlying [ranges](architecture/overview.html#architecture-range). This can be mitigated by designing your schema with [multi-column primary keys which include a monotonically increasing column](performance-best-practices-overview.html#use-multi-column-primary-keys).
 {{site.data.alerts.end}}
+
+## Differences between keyset pagination and cursors
+
+{% include {{page.version.version}}/sql/cursors-vs-keyset-pagination.md %}
 
 ## See also
 
