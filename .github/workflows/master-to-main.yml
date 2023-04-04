@@ -66,7 +66,7 @@ jobs:
       - name: Add, commit, and push new file changes to main branch
         uses: EndBug/add-and-commit@v9.1.1
         with:
-          add: 'target/'
+          cwd: 'target/'
           author_name: CockroachDB Docs
           author_email: docs@cockroachlabs.com
           committer_name: CockroachDB Docs
