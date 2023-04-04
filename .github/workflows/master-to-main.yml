@@ -5,7 +5,7 @@ on:
 
 jobs:
   master-to-main:
-    if: github.triggering_actor == "nickvigilante"
+    if: github.triggering_actor == 'nickvigilante'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.5.0
