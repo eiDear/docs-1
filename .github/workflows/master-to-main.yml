@@ -18,37 +18,37 @@ jobs:
           path: target
       - name: Copy new file changes from master to main
         run: |
-          cp -f source/v1.0 target/docs/docs
-          cp -f source/v1.1 target/docs/docs
-          cp -f source/v2.0 target/docs/docs
-          cp -f source/v2.1 target/docs/docs
-          cp -f source/v19.1 target/docs/docs
-          cp -f source/v19.2 target/docs/docs
-          cp -f source/v20.1 target/docs/docs
-          cp -f source/v20.2 target/docs/docs
-          cp -f source/v21.1 target/docs/docs
-          cp -f source/v21.2 target/docs/docs
-          cp -f source/v22.1 target/docs/docs
-          cp -f source/v22.2 target/docs/docs
-          cp -f source/v23.1 target/docs/docs
+          cp -rf source/v1.0 target/docs/docs
+          cp -rf source/v1.1 target/docs/docs
+          cp -rf source/v2.0 target/docs/docs
+          cp -rf source/v2.1 target/docs/docs
+          cp -rf source/v19.1 target/docs/docs
+          cp -rf source/v19.2 target/docs/docs
+          cp -rf source/v20.1 target/docs/docs
+          cp -rf source/v20.2 target/docs/docs
+          cp -rf source/v21.1 target/docs/docs
+          cp -rf source/v21.2 target/docs/docs
+          cp -rf source/v22.1 target/docs/docs
+          cp -rf source/v22.2 target/docs/docs
+          cp -rf source/v23.1 target/docs/docs
 
-          cp -f source/_data target/docs/docs
-          cp -f source/_includes target/docs/docs
-          cp -f source/_layouts target/docs/docs
-          cp -f source/_plugins target/docs/docs
+          cp -rf source/_data target/docs/docs
+          cp -rf source/_includes target/docs/docs
+          cp -rf source/_layouts target/docs/docs
+          cp -rf source/_plugins target/docs/docs
 
-          cp -f source/advisories target/docs/docs
-          cp -f source/api target/docs/docs
-          cp -f source/cockroachcloud target/docs/docs
-          cp -f source/css target/docs/docs
-          cp -f source/fonts target/docs/docs
-          cp -f source/images target/docs/docs
-          cp -f source/jekyll-algolia-dev target/docs/docs
+          cp -rf source/advisories target/docs/docs
+          cp -rf source/api target/docs/docs
+          cp -rf source/cockroachcloud target/docs/docs
+          cp -rf source/css target/docs/docs
+          cp -rf source/fonts target/docs/docs
+          cp -rf source/images target/docs/docs
+          cp -rf source/jekyll-algolia-dev target/docs/docs
           cp -f source/Gemfile target/docs/docs
 
-          cp -f source/js target/docs/docs
-          cp -f source/releases target/docs/docs
-          cp -f source/tutorials target/docs/docs
+          cp -rf source/js target/docs/docs
+          cp -rf source/releases target/docs/docs
+          cp -rf source/tutorials target/docs/docs
 
           cp -f source/Makefile target/docs/docs
           cp -f source/_config_base.yml target/docs/docs
