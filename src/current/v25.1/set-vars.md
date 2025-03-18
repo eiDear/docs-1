@@ -67,7 +67,7 @@ CockroachDB supports the following syntax cases, for compatibility with common S
  `USE ...` | `SET database = ...` | This is provided as convenience for users with a MySQL/MSSQL background.
  `SET NAMES ...` | `SET client_encoding = ...` | This is provided for compatibility with PostgreSQL clients.
  `SET ROLE <role>` | `SET role = <role>` |  This is provided for compatibility with PostgreSQL clients.
- `RESET ROLE` | `SET role = 'none'`/`SET role = current_user()` |  This is provided for compatibility with PostgreSQL clients.
+ `RESET ROLE` | `SET role = 'none'`/`SET role = session_user()` |  This is provided for compatibility with PostgreSQL clients.
  `SET SCHEMA <name>` | `SET search_path = <name>` | This is provided for better compatibility with PostgreSQL.
  `SET SESSION CHARACTERISTICS AS TRANSACTION ISOLATION LEVEL ...` | `SET default_transaction_isolation = ...` | This is provided for compatibility with standard SQL.
  `SET TIME ZONE ...` | `SET timezone = ...` | This is provided for compatibility with PostgreSQL clients.
@@ -333,7 +333,7 @@ SHOW role;
 (1 row)
 ~~~
 
-To reset the role of the current user, use a [`RESET`]({% link {{ page.version.version }}/reset-vars.md %}) statement. `RESET ROLE` is equivalent to `SET role = 'none'` and `SET role = current_user()`.
+To reset the role of the current user, use a [`RESET`]({% link {{ page.version.version }}/reset-vars.md %}) statement. `RESET ROLE` is equivalent to `SET role = 'none'` and `SET role = session_user()`.
 
 {% include_cached copy-clipboard.html %}
 ~~~ sql
